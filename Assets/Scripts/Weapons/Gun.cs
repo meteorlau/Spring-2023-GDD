@@ -27,7 +27,9 @@ public class Gun : MonoBehaviour
         return maxAmmo;
     }
 
-    public virtual void drop() {
-        //to be overriden
+    public void DecreaseAmo()
+    {
+        ammo -= 1;
     }
+
 }
