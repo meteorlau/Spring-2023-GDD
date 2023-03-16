@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 4641768987258466827}
   - component: {fileID: 7128852986034198178}
   - component: {fileID: 8574872340125395009}
-  - component: {fileID: 7855625382483764037}
+  - component: {fileID: 4772978363274355815}
   m_Layer: 20
   m_Name: Bomber Container
   m_TagString: Untagged
@@ -408,7 +408,7 @@ MonoBehaviour:
   strafeMultiplier: 6
   arrivalOffsetAllowed: 0.25
   pauseTime: 2
---- !u!114 &7855625382483764037
+--- !u!114 &4772978363274355815
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7223518574769766588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53cee9cf049a4164dbfe51dae758cfff, type: 3}
+  m_Script: {fileID: 11500000, guid: 38fc4bc32ec29c040acd2826c0e162db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   initialState: {fileID: 11400000, guid: 1a20771f28414444fba808e8f88445d6, type: 2}
