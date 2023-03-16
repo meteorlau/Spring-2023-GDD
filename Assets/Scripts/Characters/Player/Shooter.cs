@@ -12,9 +12,14 @@ public class Shooter : MonoBehaviour
     [SerializeField] private GameObject shotgunPrefab = null;
     [SerializeField] private GameObject rocketPrefab = null;
     private Gun currentGun;
+    private Skills skills;
 
     private void Start() {
-        currentGun = new Pistol(firingOrigin, bulletPrefab, pistolPrefab);
+        // is this correct?
+        skills = gameObject.AddComponent<Skills>();
+        currentGun = skills.GetCurrentSkill();
+
+        //currentGun = new Pistol(firingOrigin, bulletPrefab, pistolPrefab);
     }
 
     private void Update() {
