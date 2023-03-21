@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dragForceCoefficient = 2f;
 
     private Rigidbody2D rb;
-    private Vector2 startPos;
+    private Vector3 startPos;
     private bool dragging = false;
 
     public static Action onLaunch;
@@ -54,7 +54,8 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        var cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.position = new Vector3(cursorPos.x, cursorPos.y, startPos.z);
     }
 
     private void OnMouseUp()
@@ -65,7 +66,8 @@ public class PlayerMovement : MonoBehaviour
         }
         dragging = false;
 
-        Vector2 dir = startPos - new Vector2(transform.position.x, transform.position.y);
+        Vector2 dir = new Vector2(startPos.x, startPos.y)
+            - new Vector2(transform.position.x, transform.position.y);
         rb.velocity = Vector2.zero;
         Launch(dir);
         if (onLaunch != null)
