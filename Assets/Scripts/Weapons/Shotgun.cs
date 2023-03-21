@@ -6,24 +6,12 @@ public class Shotgun : Gun
 {
     public Transform firingOrigin = null;
     public GameObject bulletPrefab = null;
-    public GameObject shotgunPrefab = null;
     public float bulletForce = 20f;
-    public new int ammo = 15;
-    public new int maxAmmo = 15;
-    private float fireDelay = 0.7f;
-    public new int reloadAmount = 15;
 
+    private float fireDelay = 0.7f;
     private float fireDelayStart = 0f;
 
-    public Shotgun(Transform fo, GameObject bp, GameObject sp, int startammo) {
-        firingOrigin = fo;
-        bulletPrefab = bp;
-        shotgunPrefab = sp;
-        ammo = startammo;
-    }
-
-    // Update is called once per frame
-    public override void Update()
+    public override void Apply()
     {
         if (Input.GetButtonDown("Fire1"))
         {
@@ -71,11 +59,5 @@ public class Shotgun : Gun
 
     public override int maxAmmoCount() {
         return maxAmmo;
-    }
-
-    public override void drop() {
-        Debug.Log("in shotgun drop");
-        Instantiate(shotgunPrefab, firingOrigin.position, firingOrigin.rotation);
-        FindObjectOfType<GameManager>().shotgunAmmo = ammo;
     }
 }

@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8416047618608758161}
   - component: {fileID: -7880838448951581815}
   - component: {fileID: 2683516393057745378}
-  - component: {fileID: -5869668389076919675}
+  - component: {fileID: 3349990732578375926}
+  - component: {fileID: 4313307042475965316}
   m_Layer: 20
   m_Name: Rocket
   m_TagString: Untagged
@@ -29,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -44,6 +46,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -110,7 +113,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &-5869668389076919675
+--- !u!114 &3349990732578375926
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,6 +122,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1839403131963772748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0096d590fcb8491eabb85ce219640df, type: 3}
+  m_Script: {fileID: 11500000, guid: dc464d2be81ae34449e1aa960ba28ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: {fileID: 1839403131963772748}
+  skillType: 3
+--- !u!114 &4313307042475965316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839403131963772748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ead6caab4fc44b8a883d89511d6639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammo: 5
+  reloadAmount: 5
+  maxAmmo: 5
+  firingOrigin: {fileID: 0}
+  bulletPrefab: {fileID: 6794368948122967039, guid: a1bdfd46a50a843c7877ca5506e68e64,
+    type: 3}
+  bulletForce: 15

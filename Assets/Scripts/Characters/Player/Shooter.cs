@@ -11,54 +11,49 @@ public class Shooter : MonoBehaviour
     [SerializeField] private GameObject minigunPrefab = null;
     [SerializeField] private GameObject shotgunPrefab = null;
     [SerializeField] private GameObject rocketPrefab = null;
+
     private Gun currentGun;
     private Skills skills;
 
-    private void Start() {
-        // is this correct?
-        skills = gameObject.AddComponent<Skills>();
+/*    private void Start() {
+        skills = gameObject.GetComponent<Skills>();
         currentGun = skills.GetCurrentSkill();
-
-        //currentGun = new Pistol(firingOrigin, bulletPrefab, pistolPrefab);
     }
 
     private void Update() {
-        currentGun.Update();
+        // check for skill keypress
+        skills.ApplyCurrentSkill();
     }
 
     public void Reload() {
         currentGun.Reload();
-    }
+    }*/
 
-    public void switchMinigun() {
-        currentGun.drop();
+   /* public void switchMinigun() {
         currentGun = new Minigun(firingOrigin, bulletPrefab, minigunPrefab, FindObjectOfType<GameManager>().minigunAmmo);
         FindObjectOfType<CurrentGunUI>().switchMinigun();
     }
 
     public void switchPistol() {
-        currentGun.drop();
         currentGun = new Pistol(firingOrigin, bulletPrefab, pistolPrefab);
         FindObjectOfType<CurrentGunUI>().switchPistol();
     }
 
     public void switchShotgun() {
-        currentGun.drop();
         currentGun = new Shotgun(firingOrigin, bulletPrefab, shotgunPrefab, FindObjectOfType<GameManager>().shotgunAmmo);
         FindObjectOfType<CurrentGunUI>().switchShotgun();
     }
 
     public void switchRocket() {
-        currentGun.drop();
         currentGun = new Rocket(firingOrigin, rocketAmmoPrefab, rocketPrefab, FindObjectOfType<GameManager>().rocketAmmo);
         FindObjectOfType<CurrentGunUI>().switchRocket();
-    }
+    }*/
 
-    public int ammoCount() {
+/*    public int ammoCount() {
         return currentGun.ammoCount();
     }
 
     public int maxAmmoCount() {
         return currentGun.maxAmmoCount();
-    }
+    }*/
 }

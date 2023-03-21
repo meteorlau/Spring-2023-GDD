@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1111946268478366764}
   - component: {fileID: -7978033185581970043}
   - component: {fileID: -7156667885267457301}
-  - component: {fileID: 7104784702832782962}
+  - component: {fileID: 768669843200530685}
+  - component: {fileID: 1612800365004094704}
   m_Layer: 20
   m_Name: Minigun
   m_TagString: Untagged
@@ -29,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -44,6 +46,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -110,7 +113,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &7104784702832782962
+--- !u!114 &768669843200530685
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,6 +122,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 8479612845936640240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47f6c9052deae4b21b2f64ab9842ebfc, type: 3}
+  m_Script: {fileID: 11500000, guid: dc464d2be81ae34449e1aa960ba28ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: {fileID: 8479612845936640240}
+  skillType: 1
+--- !u!114 &1612800365004094704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8479612845936640240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edf9fc004d9834e63b3a89541d6b7628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammo: 50
+  reloadAmount: 50
+  maxAmmo: 50
+  firingOrigin: {fileID: 0}
+  bulletPrefab: {fileID: 6954552094790282884, guid: 87dc827b2fe2b488b988f63584d7d805,
+    type: 3}
+  bulletForce: 20

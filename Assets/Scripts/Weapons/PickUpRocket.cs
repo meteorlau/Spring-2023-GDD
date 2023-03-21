@@ -4,20 +4,14 @@ using UnityEngine;
 
 public class PickUpRocket : MonoBehaviour
 {
-    private bool firstTime = true;
+    [SerializeField] private GameObject rocket = null;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (firstTime)
-        {
-            firstTime = false;
-            return;
-        }
-
-        if (collision.gameObject.GetComponent<Shooter>())
+        if (collision.gameObject.GetComponent<Skills>())
         {
             Destroy(gameObject);
-            collision.gameObject.GetComponent<Shooter>().switchRocket();
+            collision.gameObject.GetComponent<Skills>().Acquire(rocket, Skill.Rocket);
         }
     }
 }

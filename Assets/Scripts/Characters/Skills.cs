@@ -2,63 +2,115 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public enum Skill
+{
+    Pistol,
+    Minigun,
+    Shotgun,
+    Rocket
+}
+
 public class Skills : MonoBehaviour
 {
-    protected int currentHealth;
-    protected static List<Gun> skillsList;
-    // index starts at 1
-    private int currentGunIndex;
+    [SerializeField] private List<GameObject> skillsList =  new List<GameObject>();
 
-    private Vector2 movement;
-    // Start is called before the first frame update
+    // index starts at 0
+    private int currentGunIndex;
+    private CurrentGunUI gunUI;
+    private TurnManager turnManager;
+
     void Start()
     {
-        currentGunIndex = 1;
+        currentGunIndex = 0;
+        gunUI = FindObjectOfType<CurrentGunUI>();
+        turnManager = GetComponent<TurnManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        // check for skill keypress
+        SelectSkill();
+        ApplyCurrentSkill();
     }
 
-    public void Aquire(Gun obj)
+    private Gun RetrieveBinding(int key)
+    {
+        return skillsList[key].GetComponent<Gun>();
+    }
+
+    private void SelectSkill()
+    {
+        // use mouse wheel scrolling to select the weapon skill we are using
+        bool changed = false;
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            // scrolling up
+            if (currentGunIndex + 1 < skillsList.Count)
+            {
+                currentGunIndex += 1;
+                changed = true;
+            }
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            if (currentGunIndex - 1 >= 0)
+            {
+                currentGunIndex -= 1;
+                changed = true;
+            }
+        }
+
+        if (changed)
+        {
+            gunUI.SwitchGun(RetrieveBinding(currentGunIndex).GetSkillType());
+        }
+    }
+
+    public void Reload()
+    {
+        if (RetrieveBinding(currentGunIndex) == null)
+        {
+            Debug.LogError("Current skill does not have Gun.cs");
+        }
+        RetrieveBinding(currentGunIndex).Reload();
+    }
+
+    // Called whenever player picks up a new weapon
+    public void Acquire(GameObject obj, Skill skill)
     {
         skillsList.Add(obj);
+        currentGunIndex = skillsList.Count - 1;
+        gunUI.SwitchGun(skill);
     }
 
-    public void SwitchGun(int key)
+    public bool HasSkill()
     {
-        currentGunIndex = key;
+        return skillsList.Count > 0;
     }
 
-    public void Drop(int key)
+    public int GetAmmoCount()
     {
-        skillsList.RemoveAt(key);
+        return RetrieveBinding(currentGunIndex).ammoCount();
     }
 
-    public Gun RetrieveBinding(int key)
+    public int GetMaxAmmoCount()
     {
-        return skillsList[key];
+        return RetrieveBinding(currentGunIndex).maxAmmoCount();
     }
 
     public Gun GetCurrentSkill()
     {
-        if (currentGunIndex - 1 < skillsList.Count)
-            return skillsList[currentGunIndex - 1];
+        if (currentGunIndex < skillsList.Count)
+        {
+            return RetrieveBinding(currentGunIndex);
+        }
         return null;
     }
 
-    public void Shoot(int key)
+    public void ApplyCurrentSkill()
     {
-        Gun currentGun = GetCurrentSkill();
-        currentGun.DecreaseAmo();
-
-        // Not sure how to determine if shot hits enemy and which enemy it hits yet
-
-        if (currentGun.ammoCount() == 0) {
-            Drop(currentGunIndex);
-            currentGunIndex = 1;
-        }
+        if (GetCurrentSkill() == null || turnManager.GetIsSlowed()) { return; }
+        GetCurrentSkill().Apply();
     }
 }

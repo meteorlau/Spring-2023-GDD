@@ -6,23 +6,12 @@ public class Minigun : Gun
 {
     public Transform firingOrigin = null;
     public GameObject bulletPrefab = null;
-    public GameObject minigunPrefab = null;
     public float bulletForce = 20f;
-    public new int ammo = 50;
-    public new int maxAmmo = 50;
-    private float fireDelay = 0.05f;
-    public new int reloadAmount = 50;
 
+    private float fireDelay = 0.05f;
     private float fireDelayStart = 0f;
 
-    public Minigun(Transform fo, GameObject bp, GameObject mp, int startammo) {
-        firingOrigin = fo;
-        bulletPrefab = bp;
-        minigunPrefab = mp;
-        ammo = startammo;
-    }
-    // Update is called once per frame
-    public override void Update()
+    public override void Apply()
     {
         if (Input.GetButton("Fire1"))
         {
@@ -57,11 +46,5 @@ public class Minigun : Gun
 
     public override int maxAmmoCount() {
         return maxAmmo;
-    }
-
-    public override void drop() {
-        //Debug.Log("in minigun drop");
-        Instantiate(minigunPrefab, firingOrigin.position, firingOrigin.rotation);
-        FindObjectOfType<GameManager>().minigunAmmo = ammo;
     }
 }

@@ -4,20 +4,14 @@ using UnityEngine;
 
 public class PickUpPistol : MonoBehaviour
 {
-    private bool firstTime = true;
+    [SerializeField] private GameObject pistol = null;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (firstTime)
+        if (collision.gameObject.GetComponent<Skills>())
         {
-            firstTime = false;
-            return;
-        }
-
-        if (collision.gameObject.GetComponent<Shooter>())
-        {
-            Destroy(gameObject);
-            collision.gameObject.GetComponent<Shooter>().switchPistol();
+            gameObject.SetActive(false);
+            collision.gameObject.GetComponent<Skills>().Acquire(pistol, Skill.Pistol);
         }
     }
 }

@@ -8,8 +8,10 @@ public class Gun : MonoBehaviour
     public int reloadAmount;
     public int maxAmmo;
 
+    [SerializeField] private Skill skill;
+
     // Update is called once per frame
-    public virtual void Update()
+    public virtual void Apply()
     {
         //to be overwritten
     }
@@ -32,4 +34,8 @@ public class Gun : MonoBehaviour
         ammo -= 1;
     }
 
+    public Skill GetSkillType()
+    {
+        return GetComponent<WeaponPickUp>().GetSkillType();
+    }
 }

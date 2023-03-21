@@ -6,24 +6,15 @@ public class Pistol : Gun
 {
     public Transform firingOrigin = null;
     public GameObject bulletPrefab = null;
-    public GameObject pistolPrefab = null;
     public float bulletForce = 20f;
-    public new int ammo = 20;
-    public new int maxAmmo = 20;
-    private int rechargeRate = 1;
-    [SerializeField] private int rechargeDelay = 2;
-    private float chargeDelay = 0.5f;
-    public new int reloadAmount = 10;
 
+    [SerializeField] private int rechargeDelay = 2;
+
+    private int rechargeRate = 1;
+    private float chargeDelay = 0.5f;
     private float rechargeStart = 0f;
 
-    public Pistol(Transform fo, GameObject bp, GameObject pp) {
-        firingOrigin = fo;
-        bulletPrefab = bp;
-        pistolPrefab = pp;
-    }
-
-    public override void Update()
+    public override void Apply()
     {
         if (Input.GetButtonDown("Fire1"))
         {
@@ -64,9 +55,5 @@ public class Pistol : Gun
 
     public override int maxAmmoCount() {
         return maxAmmo;
-    }
-
-    public override void drop() {
-        Instantiate(pistolPrefab, firingOrigin.position, firingOrigin.rotation);
     }
 }

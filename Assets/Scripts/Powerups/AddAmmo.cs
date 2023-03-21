@@ -8,9 +8,9 @@ public class AddAmmo : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Shooter>())
+        if (collision.gameObject.GetComponent<Skills>())
         {
-            collision.gameObject.GetComponent<Shooter>().Reload();
+            collision.gameObject.GetComponent<Skills>().Reload();
             Destroy(gameObject);
         }
     }

@@ -4,20 +4,14 @@ using UnityEngine;
 
 public class PickUpShotgun : MonoBehaviour
 {
-    private bool firstTime = true;
+    [SerializeField] private GameObject shotgun = null;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (firstTime)
-        {
-            firstTime = false;
-            return;
-        }
-
-        if (collision.gameObject.GetComponent<Shooter>())
+        if (collision.gameObject.GetComponent<Skills>())
         {
             Destroy(gameObject);
-            collision.gameObject.GetComponent<Shooter>().switchShotgun();
+            collision.gameObject.GetComponent<Skills>().Acquire(shotgun, Skill.Shotgun);
         }
     }
 }
