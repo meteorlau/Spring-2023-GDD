@@ -17,7 +17,7 @@ public class Health : MonoBehaviour
     [Range(0f, 1f)][SerializeField] protected float immuneAlpha = 0.3f;
     [SerializeField] protected int coinRewardOnDie = 10;
 
-    protected int currentHealth;
+    [SerializeField] protected int currentHealth;
     protected float immuneTimer;
     protected SpriteRenderer rend;
 

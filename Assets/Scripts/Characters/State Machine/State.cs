@@ -21,15 +21,19 @@ public class State : ScriptableObject
         switch (state)
         {
             case EnemyState.Patrol:
+                Debug.Log("PATROL");
                 entity.GetComponent<EnemyMovement>().ExecutePatrolState();
                 break;
             case EnemyState.Fire:
+                Debug.Log("FIRE");
                 entity.GetComponentInChildren<EnemyBase>().ExecuteFireState();
                 break;
             case EnemyState.Chase:
+                Debug.Log("CHASE");
                 entity.GetComponentInChildren<EnemyBase>().ExecuteChaseState();
                 break;
             case EnemyState.BossProtect:
+                Debug.Log("PROTECT");
                 entity.GetComponent<EnemyMovement>().StopMovement();
                 break;
             default:

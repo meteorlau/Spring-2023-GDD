@@ -385,7 +385,7 @@ MonoBehaviour:
   rotationSpeed: 720
   slowdownDistance: 0.69
   pickNextWaypointDist: 0.5
-  endReachedDistance: 0.4
+  endReachedDistance: 0.1
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -605,6 +605,7 @@ MonoBehaviour:
   immuneDuration: 2
   immuneAlpha: 0.3
   coinRewardOnDie: 10
+  currentHealth: 0
 --- !u!114 &6974855871162752129
 MonoBehaviour:
   m_ObjectHideFlags: 0

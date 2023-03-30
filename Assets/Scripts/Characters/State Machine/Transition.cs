@@ -106,6 +106,7 @@ public class Transition : ScriptableObject
                 }
             case TransitionCondition.BossAttack:
                 bool bossAttack = PollingMachine.Instance.CanBossAttack(objChecked.GetComponentInChildren<Boss>());
+                Debug.Log("BOSS CAN ATTACK: " + bossAttack);
                 if (andCond.negated)
                 {
                     return !bossAttack;
