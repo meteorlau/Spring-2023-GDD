@@ -7,7 +7,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && other.TryGetComponent(out Player player))
+        if (other.CompareTag("Player") && other.TryGetComponent(out ObsoletePlayer player))
         {
             player.Interactable = this;
         }
@@ -15,7 +15,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && other.TryGetComponent(out Player player))
+        if (other.CompareTag("Player") && other.TryGetComponent(out ObsoletePlayer player))
         {
             if (player.Interactable is DialogueActivator dialogueActivator && dialogueActivator == this)
             {
@@ -24,7 +24,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
         }
     }
 
-    public void Interact(Player player)
+    public void Interact(ObsoletePlayer player)
     {
         player.DialogueUI.ShowDialogue(dialogueObject);
     }
