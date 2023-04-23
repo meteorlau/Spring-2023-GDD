@@ -11,7 +11,7 @@ public class PickUpRocket : MonoBehaviour
         if (collision.gameObject.GetComponent<Skills>())
         {
             Destroy(gameObject);
-            collision.gameObject.GetComponent<Skills>().Acquire(rocket, Skill.Rocket);
+            //collision.gameObject.GetComponent<Skills>().Acquire(rocket, Skill.Rocket);
         }
     }
 }

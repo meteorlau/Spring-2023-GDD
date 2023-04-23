@@ -11,7 +11,7 @@ public class PickUpMinigun : MonoBehaviour
         if (collision.gameObject.GetComponent<Skills>())
         {
             Destroy(gameObject);
-            collision.gameObject.GetComponent<Skills>().Acquire(minigun, Skill.Minigun);
+            //collision.gameObject.GetComponent<Skills>().Acquire(minigun, Skill.Minigun);
         }
     }
 }

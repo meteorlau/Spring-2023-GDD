@@ -16,9 +16,9 @@ public class AmmoCountUI : MonoBehaviour
 
     private void Update() 
     {
-        if (!shooter.HasSkill()) { return; }
+        /*if (!shooter.HasSkill()) { return; }
         ammoDisplay.text = "Ammo: " + shooter.GetAmmoCount().ToString()
-            + "/" + shooter.GetMaxAmmoCount().ToString();
+            + "/" + shooter.GetMaxAmmoCount().ToString();*/
     }
 }
 

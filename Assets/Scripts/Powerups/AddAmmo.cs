@@ -10,7 +10,7 @@ public class AddAmmo : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Skills>())
         {
-            collision.gameObject.GetComponent<Skills>().Reload();
+            //collision.gameObject.GetComponent<Skills>().Reload();
             Destroy(gameObject);
         }
     }

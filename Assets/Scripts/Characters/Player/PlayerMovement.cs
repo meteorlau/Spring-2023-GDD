@@ -5,86 +5,50 @@ using System;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float maxForce = 10f;
-    [SerializeField] private float dragForceCoefficient = 2f;
+    [SerializeField] private float movementSpeed = 5f;
+    [SerializeField] private float rotateSpeed = 1f;
 
-    private Rigidbody2D rb;
-    private LineRenderer lineRenderer;
-    private Vector3 startPos;
-    private Vector3 endPos;
-    private bool dragging = false;
+    private TurnInputManager turnInputManager;
 
     public static Action onLaunch;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        lineRenderer = GetComponent<LineRenderer>();
+        turnInputManager = GetComponent<TurnInputManager>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-
+        HandleMovementInput();
     }
 
-    private void OnEnable()
+    private void HandleMovementInput()
     {
-        TurnManager.LMBDown += BeginDrag;
-    }
-
-    private void OnDisable()
-    {
-        TurnManager.LMBDown -= BeginDrag;
-    }
-
-    private void Launch(Vector2 direction)
-    {
-        float newX = Mathf.Min(direction.x * dragForceCoefficient, maxForce);
-        float newY = Mathf.Min(direction.y * dragForceCoefficient, maxForce);
-        rb.AddForce(new Vector2(newX, newY));
-    }
-
-    private void BeginDrag()
-    {
-        Debug.Log("Start Drag");
-        startPos = transform.position;
-        endPos = transform.position;
-        dragging = true;
-        lineRenderer.enabled = true;
-        lineRenderer.SetPosition(0, new Vector3(startPos.x, startPos.y, -1));
-        lineRenderer.SetPosition(1, new Vector3(startPos.x, startPos.y, -1));
-    }
-
-    private void OnMouseDrag()
-    {
-        if (!dragging)
+        Vector3 posNow = transform.position;
+        Vector3 vec = Vector3.zero;
+        if (Input.GetKey(KeyCode.W))
         {
-            return;
+            vec.y += movementSpeed;
         }
-        var cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        startPos = transform.position;
-        endPos = new Vector3(cursorPos.x, cursorPos.y, startPos.z);
-        // set line render's start and end positions
-        lineRenderer.SetPosition(0, new Vector3(startPos.x, startPos.y, -1));
-        lineRenderer.SetPosition(1, new Vector3(endPos.x, endPos.y, -1f));
-    }
-
-    private void OnMouseUp()
-    {
-        if (!dragging)
+        if (Input.GetKey(KeyCode.S))
         {
-            return;
+            vec.y += -movementSpeed;
         }
-        dragging = false;
-        lineRenderer.enabled = false;
-
-        Vector2 dir = new Vector2(startPos.x, startPos.y)
-            - new Vector2(endPos.x, endPos.y);
-        rb.velocity = Vector2.zero;
-        Launch(dir);
-        if (onLaunch != null)
+        if (Input.GetKey(KeyCode.A))
         {
-            onLaunch.Invoke();
+            vec.x += -movementSpeed;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            vec.x += movementSpeed;
+        }
+        //transform.position = posNow + vec;
+
+        // only allow rotation if we are in slow-mo
+        if (vec != Vector3.zero && turnInputManager.GetIsSlowed())
+        {
+            Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, vec);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotateSpeed);
         }
     }
 

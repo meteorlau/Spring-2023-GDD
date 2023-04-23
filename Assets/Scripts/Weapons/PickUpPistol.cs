@@ -11,7 +11,7 @@ public class PickUpPistol : MonoBehaviour
         if (collision.gameObject.GetComponent<Skills>())
         {
             gameObject.SetActive(false);
-            collision.gameObject.GetComponent<Skills>().Acquire(pistol, Skill.Pistol);
+            //collision.gameObject.GetComponent<Skills>().Acquire(pistol, Skill.Pistol);
         }
     }
 }

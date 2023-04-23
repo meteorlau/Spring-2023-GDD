@@ -10,8 +10,7 @@ public class PickUpShotgun : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Skills>())
         {
-            Destroy(gameObject);
-            collision.gameObject.GetComponent<Skills>().Acquire(shotgun, Skill.Shotgun);
+            //collision.gameObject.GetComponent<Skills>().Acquire(shotgun, Skill.Shotgun);
         }
     }
 }

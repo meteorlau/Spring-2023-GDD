@@ -13,20 +13,20 @@ public class CurrentGunUI : MonoBehaviour
         display.sprite = activeGun;
     }
 
-    public void SwitchGun(Skill skill)
+    public void SwitchGun(SkillType skill)
     {
         switch (skill)
         {
-            case Skill.Pistol:
+            case SkillType.Pistol:
                 activeGun = guns[0];
                 break;
-            case Skill.Minigun:
+            case SkillType.Minigun:
                 activeGun = guns[1];
                 break;
-            case Skill.Shotgun:
+            case SkillType.Shotgun:
                 activeGun = guns[2];
                 break;
-            case Skill.Rocket:
+            case SkillType.Rocket:
                 activeGun = guns[3];
                 break;
             default:
