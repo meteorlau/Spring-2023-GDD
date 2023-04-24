@@ -26869,12 +26869,7 @@ PrefabInstance:
     - target: {fileID: 3070283929515845450, guid: 1b7876b284957984abff2fd7e01b4b09,
         type: 3}
       propertyPath: rotateSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3070283929515845450, guid: 1b7876b284957984abff2fd7e01b4b09,
-        type: 3}
-      propertyPath: movementSpeed
-      value: 0.01
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 3070283929601844694, guid: 1b7876b284957984abff2fd7e01b4b09,
         type: 3}
@@ -26916,6 +26911,42 @@ PrefabInstance:
       propertyPath: armourySlots.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3737583692160534214, guid: 1b7876b284957984abff2fd7e01b4b09,
+        type: 3}
+      propertyPath: projectiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 59b669e42bdc2634b88f4adda3ef9958,
+        type: 2}
+    - target: {fileID: 3737583692160534214, guid: 1b7876b284957984abff2fd7e01b4b09,
+        type: 3}
+      propertyPath: projectiles.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 36ee1893fcb70824a989fb01b3d89c78,
+        type: 2}
+    - target: {fileID: 3737583692160534214, guid: 1b7876b284957984abff2fd7e01b4b09,
+        type: 3}
+      propertyPath: projectiles.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c6b378a6c55099044b33b7d719bc909a,
+        type: 2}
+    - target: {fileID: 3737583692160534214, guid: 1b7876b284957984abff2fd7e01b4b09,
+        type: 3}
+      propertyPath: projectiles.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8ff4a0d5d7bba1449ac4991a1eb50e91,
+        type: 2}
+    - target: {fileID: 3737583692160534214, guid: 1b7876b284957984abff2fd7e01b4b09,
+        type: 3}
+      propertyPath: projectiles.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: ce9d55a3e41f20142855f0c6723760c6,
+        type: 2}
+    - target: {fileID: 3737583692160534214, guid: 1b7876b284957984abff2fd7e01b4b09,
+        type: 3}
+      propertyPath: projectiles.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: e618513063b453e4990633ca8c0956b8,
+        type: 2}
     - target: {fileID: 3737583692160534214, guid: 1b7876b284957984abff2fd7e01b4b09,
         type: 3}
       propertyPath: armourySlots.Array.data[0]
@@ -27780,7 +27811,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8032889956270966102, guid: f5777ae8495904c44a5a7a63af233b8e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f5777ae8495904c44a5a7a63af233b8e, type: 3}
 --- !u!224 &8989810669417234806 stripped
 RectTransform:

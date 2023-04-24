@@ -22,14 +22,7 @@ public struct Combination
     public SkillType result;
 }
 
-[System.Serializable]
-public struct Skill
-{
-    public SkillType type;
-    public GameObject projectile;
-}
-
-public class Skills : MonoBehaviour
+public class SkillInputManager : MonoBehaviour
 {
     [SerializeField] private SkillType[] skillTypeKeyMapping;
     [SerializeField] private Combination[] skillCombinationTable;
@@ -167,20 +160,16 @@ public class Skills : MonoBehaviour
         turnInputManager.SetIsSlowed(false);
 
         SkillType toApply = TranslateSkillCombination();
+        if (toApply == SkillType.None)
+        {
+            return;
+        }
+
         foreach (Skill projectile in projectiles)
         {
-            if (projectile.type == toApply)
+            if (projectile.GetSkillType() == toApply)
             {
-                // instantiate the projectile and fire
-                GameObject bulletInstance = Instantiate(projectile.projectile, 
-                    firingOrigin.position, firingOrigin.rotation);
-                if (projectile.type == SkillType.Rocket)
-                {
-                    var currentRotation = bulletInstance.transform.rotation;
-                    bulletInstance.transform.rotation = currentRotation * Quaternion.AngleAxis(90, Vector3.forward);
-                }
-                Rigidbody2D rb = bulletInstance.GetComponent<Rigidbody2D>();
-                rb.AddForce(-1 * firingOrigin.up * bulletForce, ForceMode2D.Impulse);
+                projectile.Apply(firingOrigin);
                 break;
             }
         }

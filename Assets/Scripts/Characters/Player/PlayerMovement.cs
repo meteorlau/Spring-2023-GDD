@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
         turnInputManager = GetComponent<TurnInputManager>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         HandleMovementInput();
     }
@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         if (vec != Vector3.zero && turnInputManager.GetIsSlowed())
         {
             Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, vec);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotateSpeed);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotateSpeed * Time.deltaTime);
         }
     }
 
