@@ -34,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 3070283929515845445}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.9444, y: 1.8722, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7887606089691588199}
@@ -139,8 +139,8 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!114 &3070283929515845450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ae98704419b624784a60b6669cdb67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  rotateSpeed: 1
+  movementSpeed: 10
+  rotateSpeed: 5000
 --- !u!114 &7649259413947932004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,14 +211,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89c5c4fb055d46c09df60afa04cccbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillTypeKeyMapping: 
-  skillCombinationTable: []
+  skillTypeKeyMapping: 01000000000000000200000003000000
+  skillCombinationTable:
+  - operands: 00000000
+    result: 0
+  - operands: 01000000
+    result: 1
+  - operands: 02000000
+    result: 2
+  - operands: 03000000
+    result: 3
+  - operands: 0000000001000000
+    result: 5
+  - operands: 0000000003000000
+    result: 4
   actionKey: 101
-  projectiles: []
-  firingOrigin: {fileID: 0}
-  bulletForce: 10
+  projectiles:
+  - {fileID: 11400000, guid: 59b669e42bdc2634b88f4adda3ef9958, type: 2}
+  - {fileID: 11400000, guid: 36ee1893fcb70824a989fb01b3d89c78, type: 2}
+  - {fileID: 11400000, guid: c6b378a6c55099044b33b7d719bc909a, type: 2}
+  - {fileID: 11400000, guid: 8ff4a0d5d7bba1449ac4991a1eb50e91, type: 2}
+  - {fileID: 11400000, guid: ce9d55a3e41f20142855f0c6723760c6, type: 2}
+  - {fileID: 11400000, guid: e618513063b453e4990633ca8c0956b8, type: 2}
+  firingOrigin: {fileID: 3070283929601844694}
+  bulletForce: 15
   mouseFollowRotationSpeed: 360
-  armourySlots: []
+  armourySlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   armouryUI: {fileID: 0}
   elapsePanel: {fileID: 0}
   selectedAlpha: 0.5
@@ -234,14 +256,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2e6307ff5437340a5756a491b5361b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preparationKey: 113
+  preparationKey: 32
   actionInterval: 2
-  launchSpeed: 10
-  timeSlowMultiplier: 0.5
+  launchSpeed: 1500
+  timeSlowMultiplier: 0.1
   elapsePanel: {fileID: 0}
   inputIndicatorText: {fileID: 0}
   powerBar: {fileID: 0}
-  powerBarSpeed: 0.1
+  powerBarSpeed: 0.03
 --- !u!1 &3070283929601844693
 GameObject:
   m_ObjectHideFlags: 0
