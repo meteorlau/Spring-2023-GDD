@@ -635,7 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f47b9fce2d4f14c8e63e5b50801d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 5
   immuneDuration: 2
   immuneAlpha: 0.3
   coinRewardOnDie: 10
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firingOrigin: {fileID: 9132537248055576715}
   fireInterval: 2
-  seePlayerRange: 7
+  seePlayerRange: 20
   attackRange: 5
   healDelay: 5
   healRate: 1

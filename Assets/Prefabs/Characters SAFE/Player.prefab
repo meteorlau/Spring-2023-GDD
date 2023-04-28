@@ -133,7 +133,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ae98704419b624784a60b6669cdb67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxForce: 150
-  dragForceCoefficient: 300
+  movementSpeed: 5
+  rotateSpeed: 1
 --- !u!114 &7649259413947932004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +171,7 @@ MonoBehaviour:
   immuneDuration: 2
   immuneAlpha: 0.3
   coinRewardOnDie: 10
+  currentHealth: 0
 --- !u!114 &6180221715063613862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +211,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89c5c4fb055d46c09df60afa04cccbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillsList: []
+  skillTypeKeyMapping: 
+  skillCombinationTable: []
+  actionKey: 101
+  projectiles: []
+  firingOrigin: {fileID: 0}
+  bulletForce: 10
+  mouseFollowRotationSpeed: 360
+  armourySlots: []
+  armouryUI: {fileID: 0}
+  elapsePanel: {fileID: 0}
+  selectedAlpha: 0.5
 --- !u!114 &2812819322326161815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,8 +234,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2e6307ff5437340a5756a491b5361b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionKey: 113
+  preparationKey: 113
   actionInterval: 2
+  launchSpeed: 10
+  timeSlowMultiplier: 0.5
+  elapsePanel: {fileID: 0}
+  inputIndicatorText: {fileID: 0}
+  powerBar: {fileID: 0}
+  powerBarSpeed: 0.1
 --- !u!1 &3070283929601844693
 GameObject:
   m_ObjectHideFlags: 0
