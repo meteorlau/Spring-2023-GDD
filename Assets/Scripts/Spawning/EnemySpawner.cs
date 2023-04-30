@@ -8,7 +8,9 @@ public enum EnemyType
     Shooter,
     Bomber,
     Shaman,
-    Roller
+    Roller,
+    Mangosteen,
+    Smoothie
 }
 
 public class EnemySpawner : MonoBehaviour

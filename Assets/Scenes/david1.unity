@@ -4995,12 +4995,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6161f1c0dcd4ff249a4700b2380c5c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
   patrolSpeed: 1.5
   chaseMultiplier: 2
   strafeMultiplier: 6
   arrivalOffsetAllowed: 0.25
   pauseTime: 2
+  wanderDistance: 5
+  wanderTarget: {fileID: 0}
 --- !u!4 &274903200
 Transform:
   m_ObjectHideFlags: 0
@@ -5009,7 +5010,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274903198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0.68, z: -1.076}
+  m_LocalPosition: {x: -0.41, y: 0.68, z: -1.076}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11673,12 +11674,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 598301594}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &601759416 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1038523580182165303, guid: f5777ae8495904c44a5a7a63af233b8e,
-    type: 3}
-  m_PrefabInstance: {fileID: 8989810669417234805}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &623159294
 GameObject:
   m_ObjectHideFlags: 0
@@ -11762,7 +11757,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &629713599
 PrefabInstance:
@@ -17755,7 +17750,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1207593483
 PrefabInstance:
@@ -17877,7 +17872,7 @@ Transform:
   - {fileID: 546505204}
   - {fileID: 339352252}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1215852408
 PrefabInstance:
@@ -23503,7 +23498,7 @@ Transform:
   - {fileID: 1706614117}
   - {fileID: 631811157}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1231301277
 GameObject:
@@ -25690,7 +25685,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1513187984
 GameObject:
@@ -28059,7 +28054,7 @@ Transform:
   - {fileID: 829786126}
   - {fileID: 1283197212}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1629284853 stripped
 Transform:
@@ -30440,6 +30435,7 @@ MonoBehaviour:
   attackRange: 5
   healDelay: 2
   healRate: 1
+  circlePrefab: {fileID: 0}
   hitVFX: {fileID: 0}
   material: {fileID: 0}
 --- !u!212 &1852455785
@@ -30562,6 +30558,8 @@ MonoBehaviour:
   immuneDuration: 2
   immuneAlpha: 0.3
   coinRewardOnDie: 10
+  spikeBallExtraDamage: 1
+  currentHealth: 0
 --- !u!114 &1852455790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30574,12 +30572,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6161f1c0dcd4ff249a4700b2380c5c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
   patrolSpeed: 1.5
   chaseMultiplier: 2
   strafeMultiplier: 6
   arrivalOffsetAllowed: 0.25
   pauseTime: 2
+  wanderDistance: 5
+  wanderTarget: {fileID: 0}
 --- !u!1001 &1857716902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31973,7 +31972,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2055511854
 PrefabInstance:
@@ -35990,7 +35989,7 @@ PrefabInstance:
         type: 3}
       propertyPath: shopMenu
       value: 
-      objectReference: {fileID: 601759416}
+      objectReference: {fileID: 0}
     - target: {fileID: 9068164146345027156, guid: 1bc41f1508bb79c43afdcb4e52077f6f,
         type: 3}
       propertyPath: minigunAmmo
