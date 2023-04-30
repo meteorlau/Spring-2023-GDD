@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/david2.unity
     guid: 19b10c00f77a59442b7d2095fb764ceb
   - enabled: 1
+    path: Assets/Scenes/david3.unity
+    guid: dfa72cac5fdeb564b90b0b4d8e15bba6
+  - enabled: 1
     path: Assets/Scenes/boss.unity
     guid: 069aa47220cfdaa40b10eae75784f199
   m_configObjects: {}
