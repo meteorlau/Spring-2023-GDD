@@ -28,11 +28,11 @@ public class BossObjective : MonoBehaviour
 
     private void Spawn()
     {
-        text.text = "Shoot at spike balls to damage the boss!";
+        text.text = "Collect spike balls and ram into the boss to damage the boss!";
     }
 
     private void Protect()
     {
-        text.text = "Boss is now under protection mode. Destroy barrels to find a rocket launcher!";
+        text.text = "Boss is now under protection mode. Use your rocket launcher to finish it off!";
     }
 }

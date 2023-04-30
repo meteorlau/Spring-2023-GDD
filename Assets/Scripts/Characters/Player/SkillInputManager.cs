@@ -96,7 +96,8 @@ public class SkillInputManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (selectedSkills.Contains(skillTypeKeyMapping[1]))
+            if (selectedSkills.Contains(skillTypeKeyMapping[1])
+                && skillTypeKeyMapping.Length > 1)
             {
                 // deselect it
                 selectedSkills.Remove(skillTypeKeyMapping[1]);
@@ -104,7 +105,7 @@ public class SkillInputManager : MonoBehaviour
                 prevColor.a = 1f;
                 armourySlots[1].color = prevColor;
             }
-            else
+            else if (skillTypeKeyMapping.Length > 1)
             {
                 selectedSkills.Add(skillTypeKeyMapping[1]);
                 Color prevColor = armourySlots[1].color;
@@ -115,7 +116,8 @@ public class SkillInputManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (selectedSkills.Contains(skillTypeKeyMapping[2]))
+            if (selectedSkills.Contains(skillTypeKeyMapping[2])
+                && skillTypeKeyMapping.Length > 2)
             {
                 // deselect it
                 selectedSkills.Remove(skillTypeKeyMapping[2]);
@@ -123,7 +125,7 @@ public class SkillInputManager : MonoBehaviour
                 prevColor.a = 1f;
                 armourySlots[2].color = prevColor;
             }
-            else
+            else if (skillTypeKeyMapping.Length > 2)
             {
                 selectedSkills.Add(skillTypeKeyMapping[2]);
                 Color prevColor = armourySlots[2].color;
@@ -134,7 +136,8 @@ public class SkillInputManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            if (selectedSkills.Contains(skillTypeKeyMapping[3]))
+            if (selectedSkills.Contains(skillTypeKeyMapping[3])
+                && skillTypeKeyMapping.Length > 3)
             {
                 // deselect it
                 selectedSkills.Remove(skillTypeKeyMapping[3]);
@@ -142,12 +145,32 @@ public class SkillInputManager : MonoBehaviour
                 prevColor.a = 1f;
                 armourySlots[3].color = prevColor;
             }
-            else
+            else if (skillTypeKeyMapping.Length > 3)
             {
                 selectedSkills.Add(skillTypeKeyMapping[3]);
                 Color prevColor = armourySlots[3].color;
                 prevColor.a = selectedAlpha;
                 armourySlots[3].color = prevColor;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            if (selectedSkills.Contains(skillTypeKeyMapping[4])
+                && skillTypeKeyMapping.Length > 4)
+            {
+                // deselect it
+                selectedSkills.Remove(skillTypeKeyMapping[4]);
+                Color prevColor = armourySlots[4].color;
+                prevColor.a = 1f;
+                armourySlots[4].color = prevColor;
+            }
+            else if (skillTypeKeyMapping.Length > 4)
+            {
+                selectedSkills.Add(skillTypeKeyMapping[4]);
+                Color prevColor = armourySlots[4].color;
+                prevColor.a = selectedAlpha;
+                armourySlots[4].color = prevColor;
             }
         }
     }
@@ -214,17 +237,4 @@ public class SkillInputManager : MonoBehaviour
         }
         return resultingSkill;
     }
-
-    public bool GetIsSelectingSkill()
-    {
-        return armouryUI.activeSelf;
-    }
-
-    // Called whenever player picks up a new weapon
-    /*public void Acquire(GameObject obj, Skill skill)
-    {
-        skillsList.Add(obj);
-        currentGunIndex = skillsList.Count - 1;
-        gunUI.SwitchGun(skill);
-    }*/
 }

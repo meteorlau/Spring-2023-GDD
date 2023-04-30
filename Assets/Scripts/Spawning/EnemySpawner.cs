@@ -2,17 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public enum EnemyType
+{
+    Shooter,
+    Bomber,
+    Shaman,
+    Roller
+}
+
 public class EnemySpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject enemyPrefab = null;
+    [SerializeField] private EnemyType type;
+    [SerializeField] private int numberOfEnemies = 5;
 
-    // Update is called once per frame
-    void Update()
+    private int numSpawned = 0;
+
+    public bool finishSpawning = false;
+
+    public void SpawnEnemy()
     {
-        
+        if (numSpawned == numberOfEnemies)
+        {
+            finishSpawning = true;
+            return;
+        }
+        numSpawned += 1;
+        GameObject enemyInstance = 
+            Instantiate(enemyPrefab, transform.position, Quaternion.identity);
     }
 }

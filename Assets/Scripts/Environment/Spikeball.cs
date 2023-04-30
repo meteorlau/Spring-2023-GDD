@@ -4,23 +4,18 @@ using UnityEngine;
 
 public class Spikeball : MonoBehaviour
 {
-    [SerializeField] private float speedToDealDamage = 5f;
-    [SerializeField] private int damageDealt = 5;
+    [SerializeField] public readonly static int damageDealt = 5;
 
-    private Rigidbody2D rb;
+    public static bool collected = false;
 
-    private void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Can only hurt boss and must be above a certain speed
-        if (collision.gameObject.tag == "Boss" && 
-            rb.velocity.magnitude > speedToDealDamage)
+        // collected by player
+        if (collision.gameObject.tag == "Player" && !Spikeball.collected)
         {
-            collision.gameObject.GetComponent<BossHealth>().TakeDamage(damageDealt, BulletType.Spikeball);
+            Spikeball.collected = true;
+            collision.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            gameObject.SetActive(false);
         }
     }
 }

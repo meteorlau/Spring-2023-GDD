@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cee9cf049a4164dbfe51dae758cfff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: {fileID: 11400000, guid: 1a20771f28414444fba808e8f88445d6, type: 2}
+  initialState: {fileID: 11400000, guid: 2e29237d9d4c29c49bc69bd5fab38426, type: 2}
 --- !u!1 &9132537248055576714
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,7 +620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firingOrigin: {fileID: 0}
   fireInterval: 0
-  seePlayerRange: 15
+  seePlayerRange: 1000
   attackRange: 0
   healDelay: 5
   healRate: 1

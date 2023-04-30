@@ -62,6 +62,7 @@ public class State : ScriptableObject
     public virtual void ExecuteExitActions(GameObject entity)
     {
         EnemyShooterBase shooter = entity.GetComponentInChildren<EnemyShooterBase>();
+        EnemyRoller roller = entity.GetComponentInChildren<EnemyRoller>();
         EnemyBase enemy = entity.GetComponentInChildren<EnemyBase>();
         switch (state)
         {
@@ -71,6 +72,11 @@ public class State : ScriptableObject
                 {
                     shooter.SetStrafe(false);
                 }
+                break;
+            case EnemyState.Chase:
+                // set enemy rotation upright
+                roller.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                roller.GetComponent<Animator>().SetBool("Roll", false);
                 break;
             default:
                 break;

@@ -13,7 +13,6 @@ public class TurnInputManager : MonoBehaviour
     [SerializeField] private float timeSlowMultiplier = 0.5f;
     // UI
     [SerializeField] private GameObject elapsePanel = null;
-    [SerializeField] private TextMeshProUGUI inputIndicatorText = null;
     [SerializeField] private Image powerBar = null;
     [SerializeField] private float powerBarSpeed = 0.1f;
 
@@ -24,10 +23,6 @@ public class TurnInputManager : MonoBehaviour
     public static Action onActionPrepare;
     public static Action onSkillExecute;
 
-    private void Start()
-    {
-        inputIndicatorText.text = "WAITING";
-    }
 
     private void OnEnable()
     {
@@ -41,11 +36,6 @@ public class TurnInputManager : MonoBehaviour
 
     private void Update()
     {
-        if (!slowed)
-        {
-            inputIndicatorText.text = "AVAILABLE";
-        }
-
         if (Input.GetKeyDown(preparationKey))
         {
             resetKey = true;
@@ -65,7 +55,6 @@ public class TurnInputManager : MonoBehaviour
         Time.timeScale = timeSlowMultiplier;
         resetKey = false;
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
-        inputIndicatorText.text = "WAITING";
         StartCoroutine(RaiseBar());
         elapsePanel.SetActive(true);
     }

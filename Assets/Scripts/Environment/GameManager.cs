@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject shopMenu = null;
+    [SerializeField] private TextMeshProUGUI enemyCount = null;
 
     private int enemiesLeft;
     public bool hasKey = false;
@@ -50,15 +52,31 @@ public class GameManager : MonoBehaviour
     public void RegisterEnemy()
     {
         enemiesLeft += 1;
+        if (enemyCount != null)
+        {
+            enemyCount.text = "Enemies Left: " + enemiesLeft.ToString();
+        }
     }
 
     public void DestroyEnemy()
     {
         enemiesLeft -= 1;
+        if (enemyCount != null)
+        {
+            enemyCount.text = "Enemies Left: " + enemiesLeft.ToString();
+        }
+
         if (enemiesLeft == 0)
         {
             // Player has won!
-            //Debug.Log("Won!");
+            foreach (var spawner in FindObjectsOfType<EnemySpawner>())
+            {
+                if (!spawner.finishSpawning)
+                {
+                    return;
+                }
+            }
+            NextLevel();
         }
     }
 
@@ -71,6 +89,7 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Spikeball.collected = false;
     }
 
     public void NextLevel()

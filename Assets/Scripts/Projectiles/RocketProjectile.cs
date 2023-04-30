@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RocketProjectile : Bullet
 {
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == tagToAvoid || collision.gameObject.tag == tagToAvoid2) { return; }
         GameObject vfx = Instantiate(hitVFX, transform.position, Quaternion.identity);
