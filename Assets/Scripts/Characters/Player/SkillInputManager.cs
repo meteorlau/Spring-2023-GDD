@@ -96,8 +96,8 @@ public class SkillInputManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (selectedSkills.Contains(skillTypeKeyMapping[1])
-                && skillTypeKeyMapping.Length > 1)
+            if (skillTypeKeyMapping.Length > 1 &&
+                selectedSkills.Contains(skillTypeKeyMapping[1]))
             {
                 // deselect it
                 selectedSkills.Remove(skillTypeKeyMapping[1]);
@@ -116,8 +116,8 @@ public class SkillInputManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (selectedSkills.Contains(skillTypeKeyMapping[2])
-                && skillTypeKeyMapping.Length > 2)
+            if (skillTypeKeyMapping.Length > 2 &&
+                selectedSkills.Contains(skillTypeKeyMapping[2]))
             {
                 // deselect it
                 selectedSkills.Remove(skillTypeKeyMapping[2]);
@@ -136,8 +136,8 @@ public class SkillInputManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            if (selectedSkills.Contains(skillTypeKeyMapping[3])
-                && skillTypeKeyMapping.Length > 3)
+            if (skillTypeKeyMapping.Length > 3 &&
+                selectedSkills.Contains(skillTypeKeyMapping[3]))
             {
                 // deselect it
                 selectedSkills.Remove(skillTypeKeyMapping[3]);
@@ -156,8 +156,8 @@ public class SkillInputManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            if (selectedSkills.Contains(skillTypeKeyMapping[4])
-                && skillTypeKeyMapping.Length > 4)
+            if (skillTypeKeyMapping.Length > 4 &&
+                selectedSkills.Contains(skillTypeKeyMapping[4]))
             {
                 // deselect it
                 selectedSkills.Remove(skillTypeKeyMapping[4]);

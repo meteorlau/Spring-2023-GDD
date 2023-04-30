@@ -134,7 +134,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.75
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -154,7 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ae98704419b624784a60b6669cdb67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
   rotateSpeed: 5000
 --- !u!114 &7649259413947932004
 MonoBehaviour:
@@ -172,6 +171,7 @@ MonoBehaviour:
   immuneDuration: 2
   immuneAlpha: 0.3
   coinRewardOnDie: 10
+  spikeBallExtraDamage: 1
   currentHealth: 0
 --- !u!114 &6180221715063613862
 MonoBehaviour:

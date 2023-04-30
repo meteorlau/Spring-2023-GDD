@@ -6,7 +6,14 @@ public class RocketProjectile : Bullet
 {
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == tagToAvoid || collision.gameObject.tag == tagToAvoid2) { return; }
+        foreach (var tag in tagsToAvoid)
+        {
+            if (collision.gameObject.CompareTag(tag))
+            {
+                return;
+            }
+        }
+
         GameObject vfx = Instantiate(hitVFX, transform.position, Quaternion.identity);
         vfx.layer = gameObject.layer;
         vfx.GetComponent<SpriteRenderer>().sortingLayerName = GetComponent<SpriteRenderer>().sortingLayerName;

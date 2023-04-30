@@ -5,7 +5,6 @@ using System;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private float rotateSpeed = 1f;
 
     private TurnInputManager turnInputManager;

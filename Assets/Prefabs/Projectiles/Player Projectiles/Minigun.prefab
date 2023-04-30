@@ -147,6 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitVFX: {fileID: 8699622481109766837, guid: f8c82a5fe18b82143b008ac4f5976d73, type: 3}
-  tagToAvoid: Player
-  tagToAvoid2: Bullet
+  tagsToAvoid:
+  - Player
+  - Bullet
+  - Trail
   damageDealt: 3
