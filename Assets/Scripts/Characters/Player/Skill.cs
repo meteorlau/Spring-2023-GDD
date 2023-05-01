@@ -31,6 +31,12 @@ public class Skill : ScriptableObject
             case SkillType.BulletStream:
                 ApplyBulletStream(spawnPosition);
                 break;
+            case SkillType.Pulse:
+                ApplyPulse(spawnPosition);
+                break;
+            case SkillType.PulseSpread:
+                ApplyPulseSpread(spawnPosition);
+                break;
             default:
                 break;
         }
@@ -74,6 +80,19 @@ public class Skill : ScriptableObject
     }
 
     private void ApplyBulletStream(Transform firingOrigin)
+    {
+        Instantiate(skillPrefab, firingOrigin.position, firingOrigin.rotation);
+    }
+
+    private void ApplyPulse(Transform firingOrigin)
+    {
+        GameObject bulletInstance = Instantiate(skillPrefab,
+                    firingOrigin.position, firingOrigin.rotation);
+        Rigidbody2D rb = bulletInstance.GetComponent<Rigidbody2D>();
+        rb.AddForce(-1 * firingOrigin.up * skillSpeed, ForceMode2D.Impulse);
+    }
+
+    private void ApplyPulseSpread(Transform firingOrigin)
     {
         Instantiate(skillPrefab, firingOrigin.position, firingOrigin.rotation);
     }

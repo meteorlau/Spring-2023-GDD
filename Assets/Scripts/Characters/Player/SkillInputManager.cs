@@ -12,6 +12,8 @@ public enum SkillType
     Rocket,
     BulletMeteor,
     BulletStream,
+    Pulse,
+    PulseSpread,
     None
 }
 
