@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolSpeed: 1
-  chaseMultiplier: 2
+  chaseMultiplier: 5
   strafeMultiplier: 6
   arrivalOffsetAllowed: 0
   pauseTime: 0
@@ -355,7 +355,7 @@ MonoBehaviour:
   firingOrigin: {fileID: 6203435451309284688}
   fireInterval: 1
   seePlayerRange: 0
-  attackRange: 2
+  attackRange: 5
   healDelay: 2
   healRate: 0
   bulletPrefab: {fileID: 6954552094790282884, guid: 7e1a0fbbec0a44aff9387480f88ab8c1,

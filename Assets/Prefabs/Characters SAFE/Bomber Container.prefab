@@ -402,12 +402,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6161f1c0dcd4ff249a4700b2380c5c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
   patrolSpeed: 1.5
   chaseMultiplier: 2
   strafeMultiplier: 6
   arrivalOffsetAllowed: 0.25
   pauseTime: 2
+  wanderDistance: 5
+  wanderTarget: {fileID: 0}
 --- !u!114 &7855625382483764037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,6 +606,7 @@ MonoBehaviour:
   immuneDuration: 2
   immuneAlpha: 0.3
   coinRewardOnDie: 10
+  spikeBallExtraDamage: 1
   currentHealth: 0
 --- !u!114 &6974855871162752129
 MonoBehaviour:

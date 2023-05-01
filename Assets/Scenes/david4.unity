@@ -235,7 +235,7 @@ PrefabInstance:
     - target: {fileID: 3811889777208575601, guid: 5cdcbf5d9a4b0944fb2bb76d83da74ea,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3811889777208575605, guid: 5cdcbf5d9a4b0944fb2bb76d83da74ea,
         type: 3}
@@ -246,7 +246,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyPrefab
       value: 
-      objectReference: {fileID: 7223518574769766588, guid: 02df1d7003f92cd428b2fc40987fab03,
+      objectReference: {fileID: 4116818272785054087, guid: fff496a16f4c51f42b98c9c73437fb35,
         type: 3}
     - target: {fileID: 3811889777208575605, guid: 5cdcbf5d9a4b0944fb2bb76d83da74ea,
         type: 3}
@@ -654,7 +654,7 @@ PrefabInstance:
     - target: {fileID: 3811889777208575601, guid: 5cdcbf5d9a4b0944fb2bb76d83da74ea,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3811889777208575605, guid: 5cdcbf5d9a4b0944fb2bb76d83da74ea,
         type: 3}
@@ -665,7 +665,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyPrefab
       value: 
-      objectReference: {fileID: 7223518574769766588, guid: 02df1d7003f92cd428b2fc40987fab03,
+      objectReference: {fileID: 4116818272785054087, guid: fff496a16f4c51f42b98c9c73437fb35,
         type: 3}
     - target: {fileID: 3811889777208575605, guid: 5cdcbf5d9a4b0944fb2bb76d83da74ea,
         type: 3}
@@ -2169,7 +2169,7 @@ PrefabInstance:
     - target: {fileID: 3811889777208575605, guid: 5cdcbf5d9a4b0944fb2bb76d83da74ea,
         type: 3}
       propertyPath: numberOfEnemies
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3811889777208575606, guid: 5cdcbf5d9a4b0944fb2bb76d83da74ea,
         type: 3}
@@ -4902,7 +4902,7 @@ PrefabInstance:
     - target: {fileID: 3811889777208575605, guid: 5cdcbf5d9a4b0944fb2bb76d83da74ea,
         type: 3}
       propertyPath: numberOfEnemies
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3811889777208575606, guid: 5cdcbf5d9a4b0944fb2bb76d83da74ea,
         type: 3}
@@ -5303,7 +5303,7 @@ PrefabInstance:
     - target: {fileID: 3811889777208575601, guid: 5cdcbf5d9a4b0944fb2bb76d83da74ea,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3811889777208575605, guid: 5cdcbf5d9a4b0944fb2bb76d83da74ea,
         type: 3}
@@ -5314,7 +5314,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyPrefab
       value: 
-      objectReference: {fileID: 7223518574769766588, guid: 02df1d7003f92cd428b2fc40987fab03,
+      objectReference: {fileID: 4116818272785054087, guid: fff496a16f4c51f42b98c9c73437fb35,
         type: 3}
     - target: {fileID: 3811889777208575605, guid: 5cdcbf5d9a4b0944fb2bb76d83da74ea,
         type: 3}

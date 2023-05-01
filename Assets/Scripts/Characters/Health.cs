@@ -99,6 +99,10 @@ public class Health : MonoBehaviour
                 // Enemy has died
                 FindObjectOfType<GameManager>().DestroyEnemy();
                 FindObjectOfType<Inventory>().GainCoins(coinRewardOnDie);
+                if (GetComponent<EnemyDurian>())
+                {
+                    GetComponent<EnemyDurian>().SpawnCloud();
+                }
                 Destroy(gameObject.transform.parent.gameObject);
             }
         }
