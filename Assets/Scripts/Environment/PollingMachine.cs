@@ -47,7 +47,7 @@ public class PollingMachine : MonoBehaviour
 
     public bool TargetInAttackRange(GameObject from, GameObject target, float range)
     {
-        if (target == null)
+        if (target == null || from == null)
         {
             return false;
         }

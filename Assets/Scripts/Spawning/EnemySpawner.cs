@@ -10,7 +10,8 @@ public enum EnemyType
     Shaman,
     Roller,
     Mangosteen,
-    Smoothie
+    Smoothie,
+    Durian
 }
 
 public class EnemySpawner : MonoBehaviour
