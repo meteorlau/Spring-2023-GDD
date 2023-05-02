@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float rotateSpeed = 1f;
 
     private TurnInputManager turnInputManager;
+    private bool slowed = false;
 
     public static Action onLaunch;
 
@@ -37,6 +38,16 @@ public class PlayerMovement : MonoBehaviour
                 transform.Rotate(0, 0, -rotateSpeed * Time.deltaTime);
             }
         }
+    }
+
+    public void SetSlowed(bool s)
+    {
+        slowed = s;
+    }
+
+    public bool GetSlowed()
+    {
+        return slowed;
     }
 
     // OBSOLETE

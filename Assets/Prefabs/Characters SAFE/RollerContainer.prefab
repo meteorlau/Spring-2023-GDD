@@ -746,5 +746,5 @@ MonoBehaviour:
   attackRange: 5
   healDelay: 2
   healRate: 1
-  collisionDamage: 5
+  collisionDamage: 2
   extraRollDistance: 5

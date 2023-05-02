@@ -1786,7 +1786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dots: {fileID: 1420720955}
-  dotPersistanceTime: 5
+  dotPersistanceTime: 2
 --- !u!1 &546505203
 GameObject:
   m_ObjectHideFlags: 0

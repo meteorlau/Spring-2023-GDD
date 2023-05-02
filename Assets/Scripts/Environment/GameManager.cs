@@ -95,6 +95,6 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         int currIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene((currIndex + 1) % 3);
+        SceneManager.LoadScene((currIndex + 1) % SceneManager.sceneCountInBuildSettings);
     }
 }
