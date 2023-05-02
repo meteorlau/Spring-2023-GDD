@@ -16,6 +16,7 @@ public class Health : MonoBehaviour
     [SerializeField] protected float immuneDuration = 2f;
     [Range(0f, 1f)][SerializeField] protected float immuneAlpha = 0.3f;
     [SerializeField] protected int coinRewardOnDie = 10;
+    [SerializeField] protected int spikeBallExtraDamage = 1;
 
     [SerializeField] protected int currentHealth;
     protected float immuneTimer;
@@ -63,7 +64,21 @@ public class Health : MonoBehaviour
             return;
         } 
 
-        currentHealth = Mathf.Max(0, currentHealth - amount);
+        if (currentHealth == 0)
+        {
+            return;
+        }
+
+        if (Spikeball.collected)
+        {
+            // player takes more damage if damaged while holding spikeball
+            currentHealth = Mathf.Max(0, currentHealth - amount - spikeBallExtraDamage);
+        }
+        else
+        {
+            currentHealth = Mathf.Max(0, currentHealth - amount);
+        }
+        
         onTakeDamage?.Invoke(gameObject);
 
         if (currentHealth == 0)
@@ -84,6 +99,10 @@ public class Health : MonoBehaviour
                 // Enemy has died
                 FindObjectOfType<GameManager>().DestroyEnemy();
                 FindObjectOfType<Inventory>().GainCoins(coinRewardOnDie);
+                if (GetComponent<EnemyDurian>())
+                {
+                    GetComponent<EnemyDurian>().SpawnCloud();
+                }
                 Destroy(gameObject.transform.parent.gameObject);
             }
         }

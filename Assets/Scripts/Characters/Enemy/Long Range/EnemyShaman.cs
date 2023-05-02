@@ -77,7 +77,11 @@ public class EnemyShaman : EnemyShooterBase{
 
     public GameObject GetClosestEnemy()
     {
-        return closest.gameObject;
+        if (closest != null)
+        {
+            return closest.gameObject;
+        }
+        return null;
     }
 
     public override string toString(){

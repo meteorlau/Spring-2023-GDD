@@ -7,8 +7,7 @@ using UnityEngine.SceneManagement;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] protected GameObject hitVFX = null;
-    [SerializeField] protected string tagToAvoid = "Player";
-    [SerializeField] protected string tagToAvoid2 = "Bullet";
+    [SerializeField] protected string[] tagsToAvoid;
     [SerializeField] protected int damageDealt = 1;
 
     protected GameObject player;
@@ -40,7 +39,14 @@ public class Bullet : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == tagToAvoid || collision.gameObject.tag == tagToAvoid2 || collision.gameObject.GetComponent<LayerTrigger>()) { return; }
+        foreach (var tag in tagsToAvoid)
+        {
+            if (collision.gameObject.CompareTag(tag))
+            {
+                return;
+            }
+        }
+        if (collision.gameObject.GetComponent<LayerTrigger>()) { return; }
         GameObject vfx = Instantiate(hitVFX, transform.position, Quaternion.identity);
         vfx.layer = gameObject.layer;
         vfx.GetComponent<SpriteRenderer>().sortingLayerName = GetComponent<SpriteRenderer>().sortingLayerName;
@@ -55,7 +61,14 @@ public class Bullet : MonoBehaviour
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == tagToAvoid || collision.gameObject.tag == tagToAvoid2 || collision.gameObject.GetComponent<LayerTrigger>()) { return; }
+        foreach (var tag in tagsToAvoid)
+        {
+            if (collision.gameObject.CompareTag(tag))
+            {
+                return;
+            }
+        }
+        if (collision.gameObject.GetComponent<LayerTrigger>()) { return; }
         GameObject vfx = Instantiate(hitVFX, transform.position, Quaternion.identity);
         vfx.layer = gameObject.layer;
         vfx.GetComponent<SpriteRenderer>().sortingLayerName = GetComponent<SpriteRenderer>().sortingLayerName;

@@ -5,75 +5,49 @@ using System;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float maxForce = 10f;
-    [SerializeField] private float dragForceCoefficient = 2f;
+    [SerializeField] private float rotateSpeed = 1f;
 
-    private Rigidbody2D rb;
-    private Vector3 startPos;
-    private bool dragging = false;
+    private TurnInputManager turnInputManager;
+    private bool slowed = false;
 
     public static Action onLaunch;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        turnInputManager = GetComponent<TurnInputManager>();
     }
 
     private void Update()
     {
-
+        HandleMovementInput();
     }
 
-    private void OnEnable()
+    private void HandleMovementInput()
     {
-        TurnManager.LMBDown += BeginDrag;
-    }
-
-    private void OnDisable()
-    {
-        TurnManager.LMBDown -= BeginDrag;
-    }
-
-    private void Launch(Vector2 direction)
-    {
-        float newX = Mathf.Min(direction.x * dragForceCoefficient, maxForce);
-        float newY = Mathf.Min(direction.y * dragForceCoefficient, maxForce);
-        rb.AddForce(new Vector2(newX, newY));
-    }
-
-    private void BeginDrag()
-    {
-        Debug.Log("Start Drag");
-        startPos = transform.position;
-        dragging = true;
-    }
-
-    private void OnMouseDrag()
-    {
-        if (!dragging)
+        // only allow rotation if we are in slow-mo
+        if (turnInputManager.GetIsSlowed())
         {
-            return;
+            if (Input.GetKey(KeyCode.A))
+            {
+                // rotate left
+                transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                // rotate right
+                transform.Rotate(0, 0, -rotateSpeed * Time.deltaTime);
+            }
         }
-        var cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3(cursorPos.x, cursorPos.y, startPos.z);
     }
 
-    private void OnMouseUp()
+    public void SetSlowed(bool s)
     {
-        if (!dragging)
-        {
-            return;
-        }
-        dragging = false;
+        slowed = s;
+    }
 
-        Vector2 dir = new Vector2(startPos.x, startPos.y)
-            - new Vector2(transform.position.x, transform.position.y);
-        rb.velocity = Vector2.zero;
-        Launch(dir);
-        if (onLaunch != null)
-        {
-            onLaunch.Invoke();
-        }
+    public bool GetSlowed()
+    {
+        return slowed;
     }
 
     // OBSOLETE

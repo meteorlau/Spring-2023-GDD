@@ -18,14 +18,17 @@ public class Boss : EnemyBase
     [SerializeField] private float bulletForce = 20f;
     [SerializeField] private GameObject shield = null;
     [SerializeField] private Color protectionColor;
+    [SerializeField] private GameObject hitVFX = null;
 
     private BossPhase phase;
     private bool canFire = false;
+    private BossHealth bossHealth;
 
     protected override void Start()
     {
         base.Start();
         phase = BossPhase.Immune;
+        bossHealth = GetComponent<BossHealth>();
     }
 
     private void OnEnable()
@@ -113,5 +116,26 @@ public class Boss : EnemyBase
         Rigidbody2D rb = bulletInstance.GetComponent<Rigidbody2D>();
         rb.AddForce(Vector2.down * bulletForce, ForceMode2D.Impulse);
         canFire = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // take damage if player has collected spikeball
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (Spikeball.collected)
+            {
+                // take damage
+                bossHealth.TakeDamage(Spikeball.damageDealt, BulletType.Spikeball);
+
+                GameObject vfx = Instantiate(hitVFX, transform.position, Quaternion.identity);
+                vfx.layer = gameObject.layer;
+                vfx.GetComponent<SpriteRenderer>().sortingLayerName = GetComponent<SpriteRenderer>().sortingLayerName;
+                Destroy(vfx, 5f);
+
+                collision.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                Spikeball.collected = false;
+            }
+        }
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Boss
   - BossBullet
   - Minion
+  - Trail
   layers:
   - Default
   - TransparentFX

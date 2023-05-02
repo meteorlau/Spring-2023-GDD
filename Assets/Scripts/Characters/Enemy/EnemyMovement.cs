@@ -2,74 +2,61 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private GameObject[] waypoints;
     [SerializeField] private float patrolSpeed = 1.5f;
     [SerializeField] private float chaseMultiplier = 2f;
     [SerializeField] private float strafeMultiplier = 6f;
     [SerializeField] private float arrivalOffsetAllowed = 0.25f;
     [SerializeField] private float pauseTime = 2f;
+    [SerializeField] private float wanderDistance = 5f;
+    [SerializeField] private Transform wanderTarget = null;
 
-    protected GameObject nextWaypoint;
     private Rigidbody2D rb;
     private EnemyBase enemy;
     private AIDestinationSetter destinationSetter;
     private AIPath path;
+    private Vector2 targetWanderDestination;
 
-    private int currentWaypointIndex;
     private bool startingMoving = true;
 
     private void Start()
     {
         FindObjectOfType<GameManager>().RegisterEnemy();
 
-        // Initialize enemy location and variables
-        if (waypoints.Length > 0)
-        {
-            int randomIndex = Random.Range(0, waypoints.Length);
-            currentWaypointIndex = randomIndex;
-            GameObject initialWaypoint = waypoints[randomIndex];
-            transform.position = initialWaypoint.transform.position;
-            nextWaypoint = initialWaypoint;
-        }
-        
+        GameObject wanderObj = new GameObject();
+        wanderTarget = wanderObj.transform;
+        RandomNavCircle(transform.position, wanderDistance);
+
         rb = GetComponentInChildren<Rigidbody2D>();
         enemy = GetComponentInChildren<EnemyBase>();
         destinationSetter = GetComponent<AIDestinationSetter>();
         path = GetComponent<AIPath>();
     }
 
+    private void RandomNavCircle(Vector2 origin, float distance)
+    {
+        Vector2 randomDirection = UnityEngine.Random.insideUnitCircle * distance;
+        randomDirection += origin;
+        targetWanderDestination = randomDirection;
+    }
+
     public void ExecutePatrolState()
     {
-        if (nextWaypoint == null)
-        {
-            return;
-        }
-
-        float distToNextWaypoint =
-            Vector2.Distance(transform.position, nextWaypoint.transform.position);
-        if (distToNextWaypoint <= arrivalOffsetAllowed)
+        if (path.reachedEndOfPath && startingMoving)
         {
             startingMoving = false;
-            // Arrive at nextWaypoint, pick a new waypoint and start going there
-            int newIndex = Random.Range(0, waypoints.Length);
-            while (newIndex == currentWaypointIndex)
-            {
-                newIndex = Random.Range(0, waypoints.Length);
-            }
-            currentWaypointIndex = newIndex;
-            nextWaypoint = waypoints[currentWaypointIndex];
+            RandomNavCircle(transform.position, wanderDistance);
             StartCoroutine(PauseThenStart());
         }
         else if (startingMoving)
         {
-            // move to next waypoint
-            MoveTo(nextWaypoint.transform, false);
+            // move to next wander destination
+            wanderTarget.position = targetWanderDestination;
+            MoveTo(wanderTarget, false);
         }
-        
-        AdjustFaceDirectionIfMelee(nextWaypoint.transform.position);
     }
 
     public void AdjustFaceDirectionIfMelee(Vector3 facePos)
@@ -110,16 +97,6 @@ public class EnemyMovement : MonoBehaviour
         {
             path.maxSpeed = patrolSpeed;
         }
-        SetAnimationIfMelee();
-    }
-
-    private void SetAnimationIfMelee()
-    {
-        var animator = GetComponentInChildren<Animator>();
-        if (animator != null)
-        {
-            animator.SetInteger("AnimState", 2);
-        }
     }
 
     public void StopMovement()
@@ -132,5 +109,12 @@ public class EnemyMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(pauseTime);
         startingMoving = true;
+        wanderTarget.position = targetWanderDestination;
+        MoveTo(wanderTarget, false);
+    }
+
+    public bool GetFinishedPath()
+    {
+        return path.reachedEndOfPath;
     }
 }

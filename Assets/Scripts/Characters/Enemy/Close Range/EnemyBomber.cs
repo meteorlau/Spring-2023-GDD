@@ -26,6 +26,7 @@ public class EnemyBomber : EnemyBase
             GameObject vfx = Instantiate(hitVFX, transform.position, Quaternion.identity);
             vfx.layer = gameObject.layer;
             vfx.GetComponent<SpriteRenderer>().sortingLayerName = GetComponent<SpriteRenderer>().sortingLayerName;
+            GameManager.Instance.DestroyEnemy();
             Destroy(vfx, 5f);
             Destroy(transform.parent.gameObject);
         }

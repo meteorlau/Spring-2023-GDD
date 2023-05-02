@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 8645589896829474313}
   - component: {fileID: 3737583692160534214}
   - component: {fileID: 2812819322326161815}
+  - component: {fileID: 5057433401315515208}
   m_Layer: 20
   m_Name: Player
   m_TagString: Player
@@ -34,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 3070283929515845445}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.9444, y: 1.8722, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7887606089691588199}
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_SortingLayerID: -1869315837
   m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: d1f73dc230e83c54dbff80a48d989657, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d75f1239f0e25334787152251eb8aa8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -111,7 +112,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 20.48, y: 20.48}
+    oldSize: {x: 2.46, y: 2.46}
     newSize: {x: 0.614553, y: 0.6911432}
     adaptiveTilingThreshold: 0.5
     drawMode: 1
@@ -133,14 +134,14 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!114 &3070283929515845450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,8 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ae98704419b624784a60b6669cdb67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxForce: 150
-  dragForceCoefficient: 300
+  rotateSpeed: 5000
 --- !u!114 &7649259413947932004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +171,8 @@ MonoBehaviour:
   immuneDuration: 2
   immuneAlpha: 0.3
   coinRewardOnDie: 10
+  spikeBallExtraDamage: 1
+  currentHealth: 0
 --- !u!114 &6180221715063613862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +212,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89c5c4fb055d46c09df60afa04cccbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillsList: []
+  skillTypeKeyMapping: 01000000000000000200000003000000
+  skillCombinationTable:
+  - operands: 00000000
+    result: 0
+  - operands: 01000000
+    result: 1
+  - operands: 02000000
+    result: 2
+  - operands: 03000000
+    result: 3
+  - operands: 0000000001000000
+    result: 5
+  - operands: 0000000003000000
+    result: 4
+  actionKey: 101
+  projectiles:
+  - {fileID: 11400000, guid: 59b669e42bdc2634b88f4adda3ef9958, type: 2}
+  - {fileID: 11400000, guid: 36ee1893fcb70824a989fb01b3d89c78, type: 2}
+  - {fileID: 11400000, guid: c6b378a6c55099044b33b7d719bc909a, type: 2}
+  - {fileID: 11400000, guid: 8ff4a0d5d7bba1449ac4991a1eb50e91, type: 2}
+  - {fileID: 11400000, guid: ce9d55a3e41f20142855f0c6723760c6, type: 2}
+  - {fileID: 11400000, guid: e618513063b453e4990633ca8c0956b8, type: 2}
+  firingOrigin: {fileID: 3070283929601844694}
+  bulletForce: 15
+  mouseFollowRotationSpeed: 360
+  armourySlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  armouryUI: {fileID: 0}
+  elapsePanel: {fileID: 0}
+  selectedAlpha: 0.5
 --- !u!114 &2812819322326161815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,8 +257,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2e6307ff5437340a5756a491b5361b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionKey: 113
+  preparationKey: 32
   actionInterval: 2
+  launchSpeed: 1500
+  timeSlowMultiplier: 0.1
+  elapsePanel: {fileID: 0}
+  powerBar: {fileID: 0}
+  powerBarSpeed: 0.01
+--- !u!95 &5057433401315515208
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070283929515845445}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 220eb810d2e084f4d92cd588b8111714, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3070283929601844693
 GameObject:
   m_ObjectHideFlags: 0

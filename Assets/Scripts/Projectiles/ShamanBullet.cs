@@ -13,7 +13,15 @@ public class ShamanBullet : Bullet
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<EnemyShaman>() || collision.gameObject.tag == tagToAvoid || collision.gameObject.GetComponent<LayerTrigger>()) { return; }
+        foreach (var tag in tagsToAvoid)
+        {
+            if (collision.gameObject.CompareTag(tag))
+            {
+                return;
+            }
+        }
+
+        if (collision.gameObject.GetComponent<EnemyShaman>() || collision.gameObject.GetComponent<LayerTrigger>()) { return; }
         GameObject vfx = Instantiate(hitVFX, transform.position, Quaternion.identity);
         vfx.layer = gameObject.layer;
         vfx.GetComponent<SpriteRenderer>().sortingLayerName = GetComponent<SpriteRenderer>().sortingLayerName;

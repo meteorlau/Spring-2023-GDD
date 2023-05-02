@@ -298,7 +298,7 @@ Transform:
   m_GameObject: {fileID: 7223518574769766588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3433949653011318658}
@@ -402,12 +402,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6161f1c0dcd4ff249a4700b2380c5c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
   patrolSpeed: 1.5
-  chaseMultiplier: 2
+  chaseMultiplier: 7
   strafeMultiplier: 6
   arrivalOffsetAllowed: 0.25
   pauseTime: 2
+  wanderDistance: 5
+  wanderTarget: {fileID: 0}
 --- !u!114 &7855625382483764037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cee9cf049a4164dbfe51dae758cfff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: {fileID: 11400000, guid: 1a20771f28414444fba808e8f88445d6, type: 2}
+  initialState: {fileID: 11400000, guid: 2e29237d9d4c29c49bc69bd5fab38426, type: 2}
 --- !u!1 &9132537248055576714
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,10 +602,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f47b9fce2d4f14c8e63e5b50801d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 5
   immuneDuration: 2
   immuneAlpha: 0.3
   coinRewardOnDie: 10
+  spikeBallExtraDamage: 1
   currentHealth: 0
 --- !u!114 &6974855871162752129
 MonoBehaviour:
@@ -620,7 +622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firingOrigin: {fileID: 0}
   fireInterval: 0
-  seePlayerRange: 5
+  seePlayerRange: 1000
   attackRange: 0
   healDelay: 5
   healRate: 1
