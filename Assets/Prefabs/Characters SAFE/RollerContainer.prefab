@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolSpeed: 1.5
-  chaseMultiplier: 10
+  chaseMultiplier: 7.5
   strafeMultiplier: 6
   arrivalOffsetAllowed: 0.25
   pauseTime: 0.5
@@ -692,6 +692,7 @@ MonoBehaviour:
   immuneDuration: 2
   immuneAlpha: 0.3
   coinRewardOnDie: 10
+  spikeBallExtraDamage: 1
   currentHealth: 0
 --- !u!114 &7837932239563917070
 MonoBehaviour:

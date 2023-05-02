@@ -451,7 +451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firingOrigin: {fileID: 0}
   fireInterval: 2
-  seePlayerRange: 7
+  seePlayerRange: 15
   attackRange: 5
   healDelay: 2
   healRate: 1
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolSpeed: 1.5
-  chaseMultiplier: 2
+  chaseMultiplier: 7.5
   strafeMultiplier: 6
   arrivalOffsetAllowed: 0.25
   pauseTime: 2

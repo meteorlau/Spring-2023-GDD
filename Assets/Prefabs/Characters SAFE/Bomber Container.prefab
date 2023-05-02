@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolSpeed: 1.5
-  chaseMultiplier: 2
+  chaseMultiplier: 7
   strafeMultiplier: 6
   arrivalOffsetAllowed: 0.25
   pauseTime: 2
